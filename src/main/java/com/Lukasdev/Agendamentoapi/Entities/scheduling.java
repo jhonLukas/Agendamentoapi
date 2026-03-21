@@ -14,13 +14,13 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class scheduling {
+public class Scheduling {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private LocalDate date;
 	private LocalTime time;
     @ManyToOne
-    private scheduling scheduling;
+    private Scheduling scheduling;
 
 }
