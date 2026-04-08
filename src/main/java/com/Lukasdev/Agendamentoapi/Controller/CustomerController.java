@@ -11,28 +11,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Lukasdev.Agendamentoapi.Entities.Customer;
-import com.Lukasdev.Agendamentoapi.Repositories.CustomerRepository;
+import com.Lukasdev.Agendamentoapi.Service.CustomerService;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
-
 	@Autowired
-	private CustomerRepository repository;
+	private CustomerService service;
 
 	@PostMapping
 	public Customer create(@RequestBody Customer customer) {
-		return repository.save(customer);
+		return service.Create(customer);
 	}
 
 	@GetMapping
 	public List<Customer> findAll() {
-		return repository.findAll();
+		return service.List();
 	}
 
 	@GetMapping("/{id}")
-	public Customer searchById(@PathVariable Long id) {
-		return repository.findById(id).orElse(null);
+	public Customer findById(@PathVariable Long id) {
+		return service.findById(id);
 	}
 
 }

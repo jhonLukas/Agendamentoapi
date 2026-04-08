@@ -6,4 +6,7 @@ import com.Lukasdev.Agendamentoapi.Entities.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+	boolean existsByTell(String tell);
+
+	
 }

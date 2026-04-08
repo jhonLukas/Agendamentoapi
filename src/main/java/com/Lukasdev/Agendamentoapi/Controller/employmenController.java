@@ -10,31 +10,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Lukasdev.Agendamentoapi.Entities.Customer;
 import com.Lukasdev.Agendamentoapi.Entities.EmploymentContract;
-import com.Lukasdev.Agendamentoapi.Repositories.CustomerRepository;
-import com.Lukasdev.Agendamentoapi.Repositories.EmploymentContractRepository;
+import com.Lukasdev.Agendamentoapi.Service.EmploymentService;
 
 @RestController
 @RequestMapping("/employment")
-public class employmenController {
+public class EmploymenController {
 
 		@Autowired
-		private EmploymentContractRepository repository;
+		private EmploymentService service;
 
 		@PostMapping
 		public EmploymentContract create(@RequestBody EmploymentContract employment) {
-			return repository.save(employment);
+			return service.Create(employment);
 		}
 
 		@GetMapping
 		public List<EmploymentContract> findAll() {
-			return repository.findAll();
+			return service.List();
 		}
 
 		@GetMapping("/{id}")
 		public EmploymentContract searchById(@PathVariable Long id) {
-			return repository.findById(id).orElse(null);
+			return service.findById(id);
 		}
 
 	}

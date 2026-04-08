@@ -8,32 +8,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Lukasdev.Agendamentoapi.Entities.Customer;
 import com.Lukasdev.Agendamentoapi.Entities.Scheduling;
-import com.Lukasdev.Agendamentoapi.Repositories.SchedulingRepository;
-
-import jakarta.validation.constraints.AssertFalse.List;
+import com.Lukasdev.Agendamentoapi.Service.SchedulingService;
 
 @RestController
 @RequestMapping("/scheduling")
 public class SchedulingController {
 
 	@Autowired
-	private SchedulingRepository repository;
+	private SchedulingService service;
 
 	@PostMapping
 	public Scheduling create(@RequestBody Scheduling scheduling) {
-		return repository.save(scheduling);
+		return service.Creat(scheduling);
 	}
 
 	@GetMapping
 	public java.util.List<Scheduling> findAll() {
-          return repository.findAll();
+          return service.list();
 	}
 	
 	@GetMapping("/{id}")
 	public Scheduling searchById(@PathVariable Long id) {
-		return repository.findById(id).orElse(null);
-	}
+		return service.findById(id);	}
 
 }
