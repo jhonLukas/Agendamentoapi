@@ -10,10 +10,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class EmploymentContract {
+public class Servico {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 private String name;
-private String price;
+private Integer price;
 }

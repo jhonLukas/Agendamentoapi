@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Lukasdev.Agendamentoapi.Entities.EmploymentContract;
-import com.Lukasdev.Agendamentoapi.Service.EmploymentService;
+import com.Lukasdev.Agendamentoapi.Entities.Servico;
+import com.Lukasdev.Agendamentoapi.Service.ServicoService;
 
 @RestController
 @RequestMapping("/employment")
-public class EmploymenController {
+public class ServicoController {
 
 		@Autowired
-		private EmploymentService service;
+		private ServicoService service;
 
 		@PostMapping
-		public EmploymentContract create(@RequestBody EmploymentContract employment) {
+		public Servico create(@RequestBody Servico employment) {
 			return service.Create(employment);
 		}
 
 		@GetMapping
-		public List<EmploymentContract> findAll() {
+		public List<Servico> findAll() {
 			return service.List();
 		}
 
 		@GetMapping("/{id}")
-		public EmploymentContract searchById(@PathVariable Long id) {
+		public Servico searchById(@PathVariable Long id) {
 			return service.findById(id);
 		}
 

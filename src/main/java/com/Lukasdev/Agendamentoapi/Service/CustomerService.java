@@ -45,4 +45,9 @@ public class CustomerService {
 		return repository.findById(id).orElseThrow(() ->
 		new RuntimeException("Deve informar um id para buscar o cliente"));
 	}
+	
+	public void  Delete(Long id){
+		 repository.deleteById(id);
+		 throw new RuntimeException ("deletado com sucesso!!");
+	}
 }

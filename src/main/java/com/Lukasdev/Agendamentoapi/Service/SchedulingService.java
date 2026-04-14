@@ -22,7 +22,7 @@ public class SchedulingService {
 		if (ocupado) {
 			throw new RuntimeException("Horário já ocupado");
 		}
-
+        
 		return repository.save(scheduling);
 	}
 
